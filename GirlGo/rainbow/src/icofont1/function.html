@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Thing(){
+        Thing.prototype.foo='bar';
+        Thing.prototype.logFoo = function(){
+            console.log(this.foo)
+        }
+        Thing.prototype.setFoo = function(newFoo){
+            this.foo = newFoo;
+        }
+    }
+    var thing1 = new Thing();
+    var thing2 = new Thing();
+    thing1.logFoo();
+    thing2.logFoo();
+
+    console.log('---------------------------------------')
+
+    thing1.setFoo('foo');
+    thing1.logFoo();
+    thing2.logFoo();
+
+    console.log('-------------------------------------------------')
+
+    thing2.setFoo('set');
+    thing1.logFoo();
+    thing2.logFoo();
+
+    console.log('--------------------------------------------------');
+
+    function Th1(){
+        Th1.prototype.name = 'foo';
+        function Th2(){
+            this.name = 'set'
+            // return this.name
+        }
+    }
+    Th2.prototype = new Th1();
+    // var rr = new Th1();
+    // console.log(rr)
+    function Th3(){
+
+    }
+    Th3.prototype = new Th2();
+    var rr = new Th3();
+    console.log(rr)
+</script>
